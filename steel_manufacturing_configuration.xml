@@ -1,0 +1,211 @@
+<Configuration>
+
+    <info>
+        <industrytype>steelpowdermanufacturing</industrytype>
+        <Numcontainers>13</Numcontainers>
+        <NumEquipments>13</NumEquipments>
+        <NumPrimary>11</NumPrimary>
+        <NumNscPrimary>1</NumNscPrimary>
+        <NumESS>1</NumESS>
+        <NscPrimary>["Reductionfurnace"]</NscPrimary>
+        <NumAuxilary>2</NumAuxilary>
+        <NumNscAuxilary>0</NumNscAuxilary>
+        <NscAuxilary>[]</NscAuxilary>
+
+    </info>
+
+    <Resources> 
+        <PrimaryResources> 
+            <Container name = "Molteniron">
+                <Initialval>120</Initialval>
+                <Mincap>30</Mincap> 
+                <Maxcap>120</Maxcap> 
+            </Container>
+            <Container name = "Powderslurry">
+                <Initialval>0</Initialval>
+                <Mincap>20</Mincap> 
+                <Maxcap>60</Maxcap>
+            </Container>
+            <Container name = "Wetpowder">
+                <Initialval>0</Initialval>
+                <Mincap>15</Mincap> 
+                <Maxcap>40</Maxcap>
+            </Container>
+            <Container name = "Drypowder">
+                <Initialval>0</Initialval>
+                <Mincap>10</Mincap> 
+                <Maxcap>50</Maxcap>
+            </Container>
+            <Container name = "Crudepowder">
+                <Initialval>0</Initialval>
+                <Mincap>10</Mincap> 
+                <Maxcap>40</Maxcap>
+            </Container>
+            <Container name = "Impurepowder">
+                <Initialval>0</Initialval>
+                <Mincap>30</Mincap> 
+                <Maxcap>50</Maxcap>
+            </Container>
+            <Container name = "Semi-finishedpowder">
+                <Initialval>0</Initialval>
+                <Mincap>15</Mincap> 
+                <Maxcap>70</Maxcap>
+            </Container>
+            <Container name = "Annealedpowder">
+                <Initialval>0</Initialval>
+                <Mincap>10</Mincap> 
+                <Maxcap>40</Maxcap>
+            </Container>
+            <Container name = "Condensedpowder">
+                <Initialval>0</Initialval>
+                <Mincap>10</Mincap> 
+                <Maxcap>40</Maxcap>
+            </Container>
+            <Container name = "Purepowder">
+                <Initialval>0</Initialval>
+                <Mincap>10</Mincap> 
+                <Maxcap>50</Maxcap>
+            </Container>
+            <Container name = "Steelpowder">
+                <Initialval>0</Initialval>
+                <Mincap>0</Mincap> 
+                <Maxcap>120</Maxcap>
+            </Container>
+        </PrimaryResources> 
+        <AuxilaryResources>
+            <Container name = "Coolwater">
+                <Initialval>80</Initialval>
+                <Mincap>80</Mincap> 
+                <Maxcap>400</Maxcap> 
+            </Container>
+            <Container name = "Nitrogen">
+                <Initialval>300</Initialval>
+                <Mincap>20</Mincap> 
+                <Maxcap>350</Maxcap> 
+            </Container>
+        </AuxilaryResources>
+    </Resources>    
+    <Equipments>
+        <PrimaryEquipments>
+            <Equipment name="Atomizer">
+                <Equipmenttype>"SE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,60, 0, 0, 0]</Energydemand>
+                <Rawprocessing>[0,30, 0, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,50,0 ,0 ,0],'Nitrogen':[0,0, 0, 0,0]}</Auxilaryprocessing>
+                <Inputresource>"Molteniron"</Inputresource>
+                <Outputresource>"Powderslurry"</Outputresource>
+            </Equipment>
+            <Equipment name="Dehydrator">
+                <Equipmenttype>"SE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,10, 0, 0, 0]</Energydemand>
+                <Rawprocessing>[0,20, 0, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0,0],'Nitrogen':[0, 0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Powderslurry"</Inputresource>
+                <Outputresource>"Wetpowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Dryer">
+                <Equipmenttype>"SE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,30, 0, 0, 0]</Energydemand>
+                <Rawprocessing>[0,15, 0, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,10,0,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Wetpowder"</Inputresource>
+                <Outputresource>"Drypowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Crusher1">
+                <Equipmenttype>"CE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,15, 20, 0, 0]</Energydemand>
+                <Rawprocessing>[0,10, 15, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Drypowder"</Inputresource>
+                <Outputresource>"Crudepowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Classifier1">
+                <Equipmenttype>"CE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,15, 25, 0, 0]</Energydemand>
+                <Rawprocessing>[0,10, 20, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Crudepowder"</Inputresource>
+                <Outputresource>"Impurepowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Magneticseparator">
+                <Equipmenttype>"SE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,10, 0, 0, 0]</Energydemand>
+                <Rawprocessing>[0,30, 0, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Impurepowder"</Inputresource>
+                <Outputresource>"Semi-finishedpowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Reductionfurnace">
+                <Equipmenttype>"NSE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[75,0, 0, 0, 0]</Energydemand>
+                <Rawprocessing>[15,0, 0, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[20,0,0,0,0],'Nitrogen':[20,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Semi-finishedpowder"</Inputresource>
+                <Outputresource>"Annealedpowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Crusher2">
+                <Equipmenttype>"CE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,15, 20, 0, 0]</Energydemand>
+                <Rawprocessing>[0,10, 15, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Annealedpowder"</Inputresource>
+                <Outputresource>"Condensedpowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Classifier2">
+                <Equipmenttype>"CE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0,15, 25, 0, 0]</Energydemand>
+                <Rawprocessing>[0,10, 20, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Condensedpowder"</Inputresource>
+                <Outputresource>"Purepowder"</Outputresource>
+            </Equipment>
+            <Equipment name="Blender">
+                <Equipmenttype>"CE"</Equipmenttype>
+                <Equipmentclass>"Primary"</Equipmentclass>
+                <Energydemand>[0, 6, 10, 0, 0]</Energydemand>
+                <Rawprocessing>[0,10, 15, 0,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>"Purepowder"</Inputresource>
+                <Outputresource>"Steelpowder"</Outputresource>
+            </Equipment>
+        </PrimaryEquipments> 
+        <AuxilaryEquipments>
+            <Equipment name="Watercoolingtower">
+                <Equipmenttype>"CE"</Equipmenttype>
+                <Equipmentclass>"Auxilary"</Equipmentclass>
+                <Energydemand>[0,25,50,0 ,0]</Energydemand>
+                <Rawprocessing>[0,0,0 ,0 ,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,100,200,0,0],'Nitrogen':[0,0,0,0,0]}</Auxilaryprocessing>
+                <Inputresource>" "</Inputresource>
+                <Outputresource>"Coolwater"</Outputresource>
+            </Equipment>
+            <Equipment name="Nitrogengenerator">
+                <Equipmenttype>"CE"</Equipmenttype>
+                <Equipmentclass>"Auxilary"</Equipmentclass>
+                <Energydemand>[0,20,30,40 ,55]</Energydemand>
+                <Rawprocessing>[0,0 ,0 ,0 ,0]</Rawprocessing>
+                <Auxilaryprocessing>{'Coolwater':[0,0,0,0 ,0],'Nitrogen':[0,40,60 , 80, 100]}</Auxilaryprocessing>
+                <Inputresource>" "</Inputresource>
+                <Outputresource>"Nitrogen"</Outputresource>
+            </Equipment>
+        </AuxilaryEquipments>
+    </Equipments>
+    <Energystorage>
+        <Battery name = "Battery">
+            <Storagecapicity>300</Storagecapicity>
+            <Dischargingefficiency>0.9</Dischargingefficiency>
+            <Chargingefficiency>0.9</Chargingefficiency>
+            <Dischargingrate>50</Dischargingrate>
+            <Chargingrate>50</Chargingrate>
+         </Battery>
+    </Energystorage>
+</Configuration>
